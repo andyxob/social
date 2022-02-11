@@ -13,14 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/', [\App\Http\Controllers\MainController::class , 'index'])->middleware(['auth'])->name('dashboard');
+Route::get('/search', [\App\Http\Controllers\SearchController::class , 'getResults'])->name('search.results');
 
 require __DIR__.'/auth.php';
