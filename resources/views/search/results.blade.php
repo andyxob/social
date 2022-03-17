@@ -10,15 +10,32 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <form method="get" action={{route('search.results')}}>
-                        <x-input id="search" class="block mt-1 "
-                                 type="search"
-                                 name="search"
-                                 placeholder="Enter smthng"
-                                 />
+                        <input id="seek" class="block mt-1 "
+                               type="search"
+                               name="seek"
+                               placeholder="Enter smthng"
+                        />
                         <x-button class="ml-3 mt-3">
                             {{ __('Seek') }}
                         </x-button>
                     </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 bg-white border-b border-gray-200">
+                    <h4>Search results using "{{Request::input('seek')}}"</h4>
+
+                    @foreach($users as $user)
+                        <div class="row mt-3">
+                            <div class=".col-lg-6">
+                                <h4>{{$user->name}}</h4>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
