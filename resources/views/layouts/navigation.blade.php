@@ -46,10 +46,17 @@
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                {{ __('Log Out') }}
+                                {{ __('Log In') }}
                             </x-dropdown-link>
+
                         </form>
+
+                        <x-dropdown-link href="{{route('profile.index',  Auth::user()->name)}}">
+                            {{ __('View profile') }}
+                        </x-dropdown-link>
                     </x-slot>
+
+
                 </x-dropdown>
             </div>
 
@@ -91,6 +98,10 @@
                         {{ __('Log Out') }}
                     </x-responsive-nav-link>
                 </form>
+
+                <x-responsive-nav-link href="{{route('profile.index', ['username', Auth::user()->name])}}">
+                    {{ __('View profile') }}
+                </x-responsive-nav-link>
             </div>
         </div>
     </div>

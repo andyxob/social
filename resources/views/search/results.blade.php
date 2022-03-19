@@ -29,13 +29,14 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <h4>Search results using "{{Request::input('seek')}}"</h4>
 
-                    @foreach($users as $user)
-                        <div class="row mt-3">
-                            <div class=".col-lg-6">
-                                <h4>{{$user->name}}</h4>
-                            </div>
+                    <div class="row mt-3">
+                        <div class=".col-lg-6">
+                            @foreach($users as $user)
+                                @include('users.partials.userblock')
+                            @endforeach
                         </div>
-                    @endforeach
+                    </div>
+
                 </div>
             </div>
         </div>

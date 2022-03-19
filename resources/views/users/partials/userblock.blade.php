@@ -1,6 +1,6 @@
 <div class="media">
-    <img src="/" class="mr-3" alt="">
+    <img src=""  class="mr-3" alt="">
     <div class="media-body">
-        <h5 class="mt-0"><a href="#"></a></h5>
+        <a href="{{route('profile.index', ['username'=>$user->name])}}">{{$user->getName()}}</a>
     </div>
 </div>
