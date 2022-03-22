@@ -18,4 +18,7 @@ Route::get('/search', [\App\Http\Controllers\SearchController::class , 'getResul
 Route::get('/user/{username}', [\App\Http\Controllers\ProfileController::class, 'getProfile'])->name('profile.index');
 Route::get('profile/edit', [\App\Http\Controllers\ProfileController::class, 'getEdit'])->middleware('auth')->name('profile.edit');
 Route::post('profile/edit', [\App\Http\Controllers\ProfileController::class, 'postEdit'])->middleware('auth')->name('profile.edit');
+Route::get('/friends', [\App\Http\Controllers\FriendController::class, 'getIndex'])->middleware('auth')->name('friends.index');
+Route::get('/friends/add/{name}', [\App\Http\Controllers\FriendController::class, 'getAdd'])->middleware('auth')->name('friends.add');
+
 require __DIR__.'/auth.php';
