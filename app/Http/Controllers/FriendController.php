@@ -11,7 +11,7 @@ class FriendController extends Controller
     public function getIndex()
     {
         $friends = Auth::user()->friends();
-        $requests = Auth::user()->friendRequests();
+        $requests = Auth::user()->friendRequestPending();
         return view('friends.index', ['friends' => $friends,
             'user' => Auth::user(),
             'requests' => $requests]);
