@@ -20,15 +20,13 @@
 
                     @elseif(Auth::user()->hasFriendRequestRcieved($user))
                         <div class="flex items-center justify-end mt-4">
-                            <x-button class="ml-3">
-                                {{ __('Confirm') }}
-                            </x-button>
+                                <a href="{{route('friends.accept', $user->name)}}">Confirm</a>
                         </div>
 
                     @elseif(Auth::user()->isFriendWith($user))
                         {{$user->getName()}} is your friend
 
-                    @else
+                    @elseif(Auth::user()->id !== $user->id)
                         <div class="flex items-center justify-end mt-4">
                             <a class="btn btn-success" href="{{route('friends.add', ['name'=>$user->name])}}">Add friend</a>
                         </div>
@@ -39,7 +37,7 @@
                     @if(!$user->friends()->count())
                         <p>{{$user->getName()}} has no friends at the moment</p>
                     @else
-                        @foreach($user->friens() as $user)
+                        @foreach($user->friends() as $user)
                             @include('users.partials.userblock')
                         @endforeach
 

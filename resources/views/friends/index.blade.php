@@ -34,7 +34,7 @@
                     Requests to be friends
 
                     @if(!$requests->count())
-                        <h4>{{$user->name}} has no requests</h4>
+                        <h4>{{Auth::user()->name}} has no requests</h4>
                     @else
                         @foreach($requests as $user)
                             @include('users.partials.userblock')
