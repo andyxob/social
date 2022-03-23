@@ -67,4 +67,20 @@ class FriendController extends Controller
         return redirect(route('friends.index', $user));
 
     }
+
+    public function postDelete($name){
+        $user = User::where('name', $name)->first();
+
+        //If not user
+        if (!$user) {
+            return redirect(route('dashboard'));
+        }
+
+        if(! Auth::user()->isFriendWith($user)){
+            return redirect()->back();
+        }
+
+        Auth::user()->deleteFriend($user);
+        return redirect()->back();
+    }
 }

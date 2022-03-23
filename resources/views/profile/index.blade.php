@@ -25,6 +25,10 @@
 
                     @elseif(Auth::user()->isFriendWith($user))
                         {{$user->getName()}} is your friend
+                        <form method="post" action="{{route('friends.delete', ['name'=>$user->name])}}" >
+                            @csrf
+                            <input type="submit" class="btn btn-danger" value="Delete friend">
+                        </form>
 
                     @elseif(Auth::user()->id !== $user->id)
                         <div class="flex items-center justify-end mt-4">
