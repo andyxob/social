@@ -67,11 +67,17 @@
                                                         </li>
                                                         <li class="list-inline-item">10 likes</li>
                                                     </ul>
-                                                    <form method="post" action="#" class="mb-4">
+                                                    <form method="post" action="{{route('status.reply', $status->id)}}" class="mb-4">
                                                         @csrf
                                                         <div class="form-group">
-                                            <textarea name="status" class="form-control" placeholder="Comment"
+                                            <textarea name="reply-{{$status->id}}" class="form-control {{$errors->has("reply-{$status->id}") ? 'is-invalid':''}}" placeholder="Comment"
                                                       rows="3"></textarea>
+                                                            @if($errors->has("reply-{$status->id}"))
+                                                                <div class="invalid-feedback">
+                                                                    {{$errors->first("reply-{$status->id}")}}
+                                                                </div>
+
+                                                            @endif
                                                         </div>
                                                         <x-button>
                                                             Comment
