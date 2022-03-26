@@ -12,7 +12,7 @@ class MainController extends Controller
         if(Auth::check()){
             $statuses = Status::notReply()->where(function ($query){
                 return $query->where('user_id', Auth::user()->id)->orWhereIn('user_id', Auth::user()->friends()->pluck('id'));
-            })->orderBy('created_at', 'desc')->paginate(10);
+            })->orderBy('created_at', 'desc')->paginate(100);
 
             return view('dashboard', ['statuses'=>$statuses]);
         }

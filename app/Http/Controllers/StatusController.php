@@ -36,7 +36,7 @@ class StatusController extends Controller
         $reply = new Status();
         $reply->body = $request->input("reply-{$status->id}");
         $reply->user()->associate( Auth::user() );
-        $status->replies()->save($reply);
+        $status ->replies()->save($reply);
 
         return redirect()->back();
     }

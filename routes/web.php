@@ -27,6 +27,6 @@ Route::get('/friends/delete/{name}', [\App\Http\Controllers\FriendController::cl
 
 
 Route::post('/status', [\App\Http\Controllers\StatusController::class, 'postStatus'])->middleware('auth')->name('status.post');
-Route::post('/status/{Statusid}/reply', [\App\Http\Controllers\StatusController::class, 'postReply'])->middleware('auth')->name('status.reply');
+Route::post('/status/{StatusId}/reply', [\App\Http\Controllers\StatusController::class, 'postReply'])->middleware('auth')->name('status.reply');
 
 require __DIR__.'/auth.php';
