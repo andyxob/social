@@ -45,6 +45,18 @@
                                 name="password_confirmation" required />
             </div>
 
+
+
+                <div class="mt-4">
+                    <x-label for="sex" :value="__('Choose your gender')" />
+
+                    <select class="block mt-1 w-full"
+                             name="sex" required >
+                        <option value="m" {{old('sex') === 'm' ? 'selected' : ''}}>Male</option>
+                        <option value="f" {{old('sex') === 'f' ? 'selected' : ''}}>Female</option>
+                    </select>
+                </div>
+
             <div class="flex items-center justify-end mt-4">
                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
                     {{ __('Already registered?') }}
