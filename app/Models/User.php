@@ -98,4 +98,14 @@ class User extends Authenticatable
     public function statuses(){
         return $this->hasMany('App\Models\Status', 'user_id');
     }
+
+    public function hasLikedStatus(Status $status){
+        return (bool) $status->likes->where('likeable_id', $status->id)
+            ->where('likeable_type', get_class($status))->where('user_id', $this->id)
+            ->count();
+    }
+
+    public function likes(){
+        return $this->hasMany('App\Models\Like', 'user_id');
+    }
 }
