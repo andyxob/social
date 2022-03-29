@@ -66,8 +66,11 @@
                                                         <li class="list-inline-item">
                                                             <a href="{{route('status.like', $status->id)}}">Like</a>
                                                         </li>
-                                                        <li class="list-inline-item">10 likes</li>
                                                         @endif
+                                                        <li class="list-inline-item">
+                                                            {{$status->likes()->count()}}
+                                                            {{Str::plural('like',$status->likes()->count())}}
+                                                        </li>
                                                     </ul>
                                                     @foreach($status->replies as $reply)
                                                         <div class="py-12">
@@ -80,9 +83,8 @@
                                                                                      alt="{{$reply->user->getName()}}">
                                                                             </a>
                                                                             <div class="media-body">
-                                                                                <h2>
-                                                                                    <a href="{{route('profile.index', $reply->user->name)}}">{{$reply->user->getName()}}</a>
-                                                                                </h2>
+                                                                                <h2><a href="{{route('profile.index', $reply->user->name)}}">{{$reply->user->getName()}}</a></h2>
+
                                                                                 <p>{{$reply->body}}</p>
                                                                                 <ul class="list-inline">
                                                                                     <li class="list-inline-item">{{$reply->created_at->diffForHumans()  }}</li>
@@ -90,8 +92,14 @@
                                                                                         <li class="list-inline-item">
                                                                                             <a href="{{route('status.like', $reply->id)}}">Like</a>
                                                                                         </li>
-                                                                                        <li class="list-inline-item">10 likes</li>
+
                                                                                     @endif
+
+                                                                                    <li class="list-inline-item">
+
+                                                                                        {{$reply->likes()->count()}}
+                                                                                        {{Str::plural('like',$reply->likes()->count())}}
+                                                                                    </li>
                                                                                 </ul>
 
                                                                                 </ul>

@@ -86,8 +86,12 @@
                                             <li class="list-inline-item">
                                                 <a href="{{route('status.like', $status->id)}}">Like</a>
                                             </li>
-                                            <li class="list-inline-item">10 likes</li>
                                         @endif
+                                        <li class="list-inline-item">
+
+                                            {{$status->likes()->count()}}
+                                            {{Str::plural('like',$status->likes()->count())}}
+                                        </li>
                                     </ul>
                                     @foreach($status->replies as $reply)
                                         <div class="py-12">
@@ -109,7 +113,11 @@
                                                                         <li class="list-inline-item">
                                                                             <a href="{{route('status.like', $reply->id)}}">Like</a>
                                                                         </li>
-                                                                        <li class="list-inline-item">10 likes</li>
+                                                                        <li class="list-inline-item">
+
+                                                                            {{$reply->likes()->count()}}
+                                                                            {{Str::plural('like',$reply->likes()->count())}}
+                                                                        </li>
                                                                     @endif
                                                                 </ul>
 
@@ -140,7 +148,6 @@
                                         </x-button>
 
                                     </form>
-
                                         @endif
                                     </ul>
                                 </div>
