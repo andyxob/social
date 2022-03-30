@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
-            $table->boolean('is_admin')->default(0);
+            $table->tinyInteger('is_admin')->default(0);
         });
     }
 

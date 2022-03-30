@@ -20,10 +20,17 @@ Route::get('/user/{username}', [\App\Http\Controllers\ProfileController::class, 
 Route::get('profile/edit', [\App\Http\Controllers\ProfileController::class, 'getEdit'])->middleware('auth')->name('profile.edit');
 Route::post('profile/edit', [\App\Http\Controllers\ProfileController::class, 'postEdit'])->middleware('auth')->name('profile.edit');
 
-Route::get('/friends', [\App\Http\Controllers\FriendController::class, 'getIndex'])->middleware('auth')->name('friends.index');
-Route::get('/friends/add/{name}', [\App\Http\Controllers\FriendController::class, 'getAdd'])->middleware('auth')->name('friends.add');
-Route::get('/friends/accept/{name}', [\App\Http\Controllers\FriendController::class, 'getAccept'])->middleware('auth')->name('friends.accept');
-Route::get('/friends/delete/{name}', [\App\Http\Controllers\FriendController::class, 'postDelete'])->middleware('auth')->name('friends.delete');
+
+Route::group(['middleware'=>'auth',
+    'prefix'=>'friends'],function (){
+    Route::get('/', [\App\Http\Controllers\FriendController::class, 'getIndex'])->name('friends.index');
+    Route::get('/add/{name}', [\App\Http\Controllers\FriendController::class, 'getAdd'])->name('friends.add');
+    Route::get('/accept/{name}', [\App\Http\Controllers\FriendController::class, 'getAccept'])->name('friends.accept');
+    Route::get('/delete/{name}', [\App\Http\Controllers\FriendController::class, 'postDelete'])->name('friends.delete');
+
+});
+
+Route::get('/admin', [\App\Http\Controllers\MainController::class , 'admin'])->middleware('is_admin')->name('admin.index');
 
 
 Route::post('/status', [\App\Http\Controllers\StatusController::class, 'postStatus'])->middleware('auth')->name('status.post');

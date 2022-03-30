@@ -109,4 +109,8 @@ class User extends Authenticatable
     public function likes(){
         return $this->hasMany('App\Models\Like', 'user_id');
     }
+
+    public function isAdmin(){
+        return $this->is_admin === 1;
+    }
 }
