@@ -29,9 +29,11 @@ Route::group(['middleware'=>'auth',
     Route::get('/delete/{name}', [\App\Http\Controllers\FriendController::class, 'postDelete'])->name('friends.delete');
 
 });
+Route::group(['prefix'=>'admin', 'middleware'=>'is_admin'], function (){
+    Route::get('/', [\App\Http\Controllers\MainController::class , 'admin'])->name('admin.index');
+    Route::resource('statuses', \App\Http\Controllers\Admin\StatusController::class);
 
-Route::get('/admin', [\App\Http\Controllers\MainController::class , 'admin'])->middleware('is_admin')->name('admin.index');
-
+});
 
 Route::post('/status', [\App\Http\Controllers\StatusController::class, 'postStatus'])->middleware('auth')->name('status.post');
 Route::post('/status/{StatusId}/reply', [\App\Http\Controllers\StatusController::class, 'postReply'])->middleware('auth')->name('status.reply');

@@ -21,6 +21,6 @@ class MainController extends Controller
     }
 
     public function admin(){
-        dd('ok');
+        return view('admin.index');
     }
 }
