@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <a href="{{route('statuses.index')}}">Go to posts</a>
-                    <a href="">Go to users</a>
+                    <a href="{{route('users.index')}}">Go to users</a>
                 </div>
             </div>
         </div>

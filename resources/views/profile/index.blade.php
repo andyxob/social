@@ -3,10 +3,12 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ $user->name }}`s profile
         </h2>
+        @if($user->id === \Illuminate\Support\Facades\Auth::user()->id)
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             <a href="{{route('profile.edit')}}">Edit profile</a>
         </h2>
 
+        @endif
     </x-slot>
 
     <div class="py-12">
