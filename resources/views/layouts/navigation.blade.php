@@ -21,6 +21,14 @@
                         {{ __('Search') }}
                     </x-nav-link>
                 </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('friends.index')" :active="request()->routeIs('friends.index')">
+                        {{ __('Friends') }}
+                    </x-nav-link>
+                </div>
+
+
                 @if(\Illuminate\Support\Facades\Auth::user()->isAdmin())
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('admin.index')" :active="request()->routeIs('admin.index')">
@@ -28,6 +36,8 @@
                     </x-nav-link>
                 </div>
                 @endif
+
+
             </div>
 
             <!-- Settings Dropdown -->

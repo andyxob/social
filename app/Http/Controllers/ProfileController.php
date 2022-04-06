@@ -15,7 +15,6 @@ class ProfileController extends Controller
 
         $statuses = $user->statuses()->notReply()->get();
 
-
         return view('profile.index', ['user'=>$user,
             'statuses'=>$statuses,
             'authUserIsFriend'=>Auth::user()->isFriendWith($user)]);
@@ -26,9 +25,12 @@ class ProfileController extends Controller
     }
 
     public function postEdit(Request $request){
-        $this->validate($request, ['name'=>'max:20']);
+        $this->validate($request, ['name'=>'max:20',
+//            'image'=>'img,jpeg'
+        ]);
         Auth::user()->update([
-            'name'=>$request->input('name')
+            'name'=>$request->input('name'),
+            /*'image'=>$request->input('image'),*/
         ]);
 
         return redirect(route('profile.edit'));
